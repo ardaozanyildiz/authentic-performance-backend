@@ -25,7 +25,7 @@ public class EmailService {
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
             helper.setTo("aysunonder8080@gmail.com");
-            helper.setFrom("aysunonder8080@gmail.com"); // On utilise ton adresse pour l'envoi
+            helper.setFrom("aysunonder8080@gmail.com");
             helper.setReplyTo(request.getEmail());
             helper.setSubject("Nouveau message : " + request.getSubject());
 
@@ -84,7 +84,7 @@ public class EmailService {
         }
     }
 
-    // --- 3. CONFIRMATION DE RENDEZ-VOUS (VERS LE CLIENT) ---
+    // --- 3. CONFIRMATION DE RENDEZ-VOUS (VERS LE CLIENT) AVEC BOUTON D'ANNULATION ---
     @Async
     public void sendConfirmationToClient(Appointment app) {
         try {
@@ -98,6 +98,9 @@ public class EmailService {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy 'à' HH:mm");
             String dateLabel = app.getAppointmentDate().format(formatter);
 
+            // Le lien dynamique généré avec l'ID du rendez-vous
+            String lienAnnulation = "http://localhost:5173/annuler-rdv/" + app.getId();
+
             String htmlContent = "<div style='font-family: Arial, sans-serif; border: 1px solid #C9B59C; padding: 30px; border-radius: 10px; max-width: 600px; margin: 0 auto;'>"
                     + "<h2 style='color: #C9B59C; text-align: center;'>Votre rendez-vous est confirmé !</h2>"
                     + "<p>Bonjour <strong>" + app.getClientName() + "</strong>,</p>"
@@ -106,8 +109,10 @@ public class EmailService {
                     + "<p style='margin: 5px 0; font-size: 16px;'>📅 <strong>Date et heure :</strong> " + dateLabel + "</p>"
                     + "<p style='margin: 15px 0 5px 0; font-size: 16px;'>📍 <strong>Lieu de l'atelier :</strong><br>9600 Rue Meilleur, Suite #820-4<br>Montréal, QC H2N 2E3</p>"
                     + "</div>"
-                    + "<p>Si vous avez des questions ou si vous devez annuler votre rendez-vous, n'hésitez pas à répondre directement à ce courriel.</p>"
-                    + "<p>Au plaisir de vous rencontrer !</p>"
+                    + "<div style='text-align: center; margin: 30px 0;'>"
+                    + "<p style='color: #666; font-size: 14px; margin-bottom: 10px;'>Vous avez un empêchement ? Vous pouvez libérer votre place en cliquant ci-dessous :</p>"
+                    + "<a href='" + lienAnnulation + "' style='background-color: #4a3728; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block;'>Annuler mon rendez-vous</a>"
+                    + "</div>"
                     + "<hr style='border: 0; border-top: 1px solid #eee; margin: 30px 0;'>"
                     + "<p style='font-size: 14px; color: #555;'><strong>L'équipe Authentic Performance Production</strong><br>T. +1 (514) 337-1951</p>"
                     + "</div>";
@@ -116,6 +121,36 @@ public class EmailService {
             mailSender.send(message);
         } catch (Exception e) {
             System.err.println("Erreur confirmation client : " + e.getMessage());
+        }
+    }
+
+    // --- 4. NOUVEAU : AVERTIR LE GÉRANT DE L'ANNULATION ---
+    @Async
+    public void sendCancellationToManager(Appointment app) {
+        try {
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+
+            helper.setTo("aysunonder8080@gmail.com");
+            helper.setFrom("aysunonder8080@gmail.com");
+            helper.setSubject(" ANNULATION : " + app.getClientName());
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy 'à' HH:mm");
+            String dateLabel = app.getAppointmentDate().format(formatter);
+
+            String htmlContent = "<div style='font-family: Arial, sans-serif; border: 1px solid #cc0000; padding: 20px; border-radius: 10px;'>"
+                    + "<h2 style='color: #cc0000;'>Un rendez-vous a été annulé par le client</h2>"
+                    + "<p><strong>Client :</strong> " + app.getClientName() + "</p>"
+                    + "<p><strong>Date libérée :</strong> " + dateLabel + "</p>"
+                    + "<p><strong>Service qui était prévu :</strong> " + app.getServiceType() + "</p>"
+                    + "<hr style='border: 0; border-top: 1px solid #eee;'>"
+                    + "<p style='font-size: 14px; color: #333;'>La plage horaire est automatiquement redevenue disponible sur le site Web.</p>"
+                    + "</div>";
+
+            helper.setText(htmlContent, true);
+            mailSender.send(message);
+        } catch (Exception e) {
+            System.err.println("Erreur courriel d'annulation gérant : " + e.getMessage());
         }
     }
 }
