@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
-@EnableAsync // <--- TRÈS IMPORTANT : Active l'arrière-plan
+@EnableAsync
 public class CoutureBackendApplication {
 
     public static void main(String[] args) {

@@ -24,7 +24,8 @@ public class EmailService {
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
-            helper.setTo("aysunonder8080@gmail.com");
+            // DESTINATAIRE MODIFIÉ POUR TON TEST :
+            helper.setTo("ardasshopify@gmail.com");
             helper.setFrom("aysunonder8080@gmail.com");
             helper.setReplyTo(request.getEmail());
             helper.setSubject("Nouveau message : " + request.getSubject());
@@ -60,7 +61,8 @@ public class EmailService {
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
-            helper.setTo("aysunonder8080@gmail.com");
+            // DESTINATAIRE MODIFIÉ POUR TON TEST :
+            helper.setTo("ardasshopify@gmail.com");
             helper.setFrom("aysunonder8080@gmail.com");
             helper.setSubject("NOUVEAU RENDEZ-VOUS : " + app.getClientName());
 
@@ -91,6 +93,7 @@ public class EmailService {
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
+            // Le destinataire est le client (tu vas entrer ton courriel dans le formulaire du site)
             helper.setTo(app.getClientEmail());
             helper.setFrom("aysunonder8080@gmail.com");
             helper.setSubject("Confirmation de votre rendez-vous - Authentic Performance");
@@ -106,8 +109,8 @@ public class EmailService {
                     + "<p>Bonjour <strong>" + app.getClientName() + "</strong>,</p>"
                     + "<p>Nous avons bien reçu votre demande. Voici les détails de votre rencontre avec nos experts pour le service de <strong>" + app.getServiceType() + "</strong> :</p>"
                     + "<div style='background-color: #F9F8F6; padding: 20px; border-radius: 8px; margin: 25px 0;'>"
-                    + "<p style='margin: 5px 0; font-size: 16px;'>📅 <strong>Date et heure :</strong> " + dateLabel + "</p>"
-                    + "<p style='margin: 15px 0 5px 0; font-size: 16px;'>📍 <strong>Lieu de l'atelier :</strong><br>9600 Rue Meilleur, Suite #820-4<br>Montréal, QC H2N 2E3</p>"
+                    + "<p style='margin: 5px 0; font-size: 16px;'> <strong>Date et heure :</strong> " + dateLabel + "</p>"
+                    + "<p style='margin: 15px 0 5px 0; font-size: 16px;'> <strong>Lieu de l'atelier :</strong><br>9600 Rue Meilleur, Suite #820-4<br>Montréal, QC H2N 2E3</p>"
                     + "</div>"
                     + "<div style='text-align: center; margin: 30px 0;'>"
                     + "<p style='color: #666; font-size: 14px; margin-bottom: 10px;'>Vous avez un empêchement ? Vous pouvez libérer votre place en cliquant ci-dessous :</p>"
@@ -131,7 +134,8 @@ public class EmailService {
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
-            helper.setTo("aysunonder8080@gmail.com");
+            // DESTINATAIRE MODIFIÉ POUR TON TEST :
+            helper.setTo("ardasshopify@gmail.com");
             helper.setFrom("aysunonder8080@gmail.com");
             helper.setSubject(" ANNULATION : " + app.getClientName());
 

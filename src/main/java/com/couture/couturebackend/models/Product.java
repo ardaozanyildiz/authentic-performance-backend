@@ -9,9 +9,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Product {
     @Id
     private String id;
-    private String name;        // ex: Jaquette chirurgicale L2
-    private String description; // ex: Tissu haute résistance, lavable
-    private String category;    // ex: Hôpital, Cuisine, Literie
-    private String material;    // ex: Coton, Polyester
-    private String imageUrl;    // Le lien vers la photo du vêtement
+    private String name;
+    private String description;
+    private String category;
+    private String material;
+    private String imageUrl;
 }

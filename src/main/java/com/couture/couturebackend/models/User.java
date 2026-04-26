@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class User {
     @Id
     private String id;
-    private String companyName; // Très important pour les clients de l'entreprise
+    private String companyName;
     private String email;
-    private String password;    // Ce mot de passe sera crypté plus tard
+    private String password;
 }
