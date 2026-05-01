@@ -1,6 +1,6 @@
 # Étape 1 : Build avec Maven
 FROM maven:3.8.5-openjdk-17 AS build
-COPY . .
+COPY src .
 RUN mvn clean package -DskipTests
 
 # Étape 2 : Exécution
