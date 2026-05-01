@@ -40,8 +40,8 @@ public class EmailService {
                     + "</div>";
 
             CreateEmailOptions params = CreateEmailOptions.builder()
-                    .from("Authentic Performance <onboarding@resend.dev>")
-                    .to("ardaozanyildiz11@gmail.com")
+                    .from("Authentic Performance <rendezvous@authenticperformanceproduction.ca>")
+                    .to("aysunonder8080@gmail.com")
                     .replyTo(request.getEmail())
                     .subject("Nouveau message : " + request.getSubject())
                     .html(htmlContent)
@@ -72,8 +72,8 @@ public class EmailService {
                     + "</div>";
 
             CreateEmailOptions params = CreateEmailOptions.builder()
-                    .from("Authentic Performance <onboarding@resend.dev>")
-                    .to("ardaozanyildiz11@gmail.com")
+                    .from("Authentic Performance <rendezvous@authenticperformanceproduction.ca>")
+                    .to("aysunonder8080@gmail.com")
                     .subject("NOUVEAU RENDEZ-VOUS : " + app.getClientName())
                     .html(htmlContent)
                     .build();
@@ -110,7 +110,7 @@ public class EmailService {
                     + "</div>";
 
             CreateEmailOptions params = CreateEmailOptions.builder()
-                    .from("Authentic Performance <onboarding@resend.dev>")
+                    .from("Authentic Performance <rendezvous@authenticperformanceproduction.ca>")
                     .to(app.getClientEmail())
                     .subject("Confirmation de votre rendez-vous - Authentic Performance")
                     .html(htmlContent)
@@ -140,8 +140,8 @@ public class EmailService {
                     + "</div>";
 
             CreateEmailOptions params = CreateEmailOptions.builder()
-                    .from("Authentic Performance <onboarding@resend.dev>")
-                    .to("ardaozanyildiz11@gmail.com")
+                    .from("Authentic Performance <rendezvous@authenticperformanceproduction.ca>")
+                    .to("aysunonder8080@gmail.com")
                     .subject("ANNULATION : " + app.getClientName())
                     .html(htmlContent)
                     .build();
