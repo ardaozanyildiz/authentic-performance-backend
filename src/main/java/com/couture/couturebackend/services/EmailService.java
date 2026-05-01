@@ -17,14 +17,12 @@ public class EmailService {
     @Autowired
     private JavaMailSender mailSender;
 
-    // --- 1. COURRIEL DE LA PAGE CONTACT (VERS LE GÉRANT) ---
     @Async
     public void sendContactEmailToManager(EmailRequest request) {
         try {
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
-            // DESTINATAIRE MODIFIÉ POUR TON TEST :
             helper.setTo("aysunonder8080@gmail.com");
             helper.setFrom("aysunonder8080@gmail.com");
             helper.setReplyTo(request.getEmail());
@@ -54,14 +52,12 @@ public class EmailService {
         }
     }
 
-    // --- 2. NOTIFICATION DE RENDEZ-VOUS (VERS LE GÉRANT) ---
     @Async
     public void sendNotificationToManager(Appointment app) {
         try {
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
-            // DESTINATAIRE MODIFIÉ POUR TON TEST :
             helper.setTo("aysunonder8080@gmail.com");
             helper.setFrom("aysunonder8080@gmail.com");
             helper.setSubject("NOUVEAU RENDEZ-VOUS : " + app.getClientName());
@@ -86,14 +82,12 @@ public class EmailService {
         }
     }
 
-    // --- 3. CONFIRMATION DE RENDEZ-VOUS (VERS LE CLIENT) AVEC BOUTON D'ANNULATION ---
     @Async
     public void sendConfirmationToClient(Appointment app) {
         try {
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
-            // Le destinataire est le client (tu vas entrer ton courriel dans le formulaire du site)
             helper.setTo(app.getClientEmail());
             helper.setFrom("aysunonder8080@gmail.com");
             helper.setSubject("Confirmation de votre rendez-vous - Authentic Performance");
@@ -101,7 +95,6 @@ public class EmailService {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy 'à' HH:mm");
             String dateLabel = app.getAppointmentDate().format(formatter);
 
-            // Le lien dynamique généré avec l'ID du rendez-vous
             String lienAnnulation = "http://localhost:5173/annuler-rdv/" + app.getId();
 
             String htmlContent = "<div style='font-family: Arial, sans-serif; border: 1px solid #C9B59C; padding: 30px; border-radius: 10px; max-width: 600px; margin: 0 auto;'>"
@@ -127,14 +120,12 @@ public class EmailService {
         }
     }
 
-    // --- 4. NOUVEAU : AVERTIR LE GÉRANT DE L'ANNULATION ---
     @Async
     public void sendCancellationToManager(Appointment app) {
         try {
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
-            // DESTINATAIRE MODIFIÉ POUR TON TEST :
             helper.setTo("aysunonder8080@gmail.com");
             helper.setFrom("aysunonder8080@gmail.com");
             helper.setSubject(" ANNULATION : " + app.getClientName());

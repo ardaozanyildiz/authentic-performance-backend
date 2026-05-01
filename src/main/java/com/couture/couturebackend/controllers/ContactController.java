@@ -17,10 +17,8 @@ public class ContactController {
     @PostMapping("/send")
     public ResponseEntity<?> sendEmail(@RequestBody EmailRequest request) {
         try {
-            // Le courriel part en arrière-plan !
             emailService.sendContactEmailToManager(request);
 
-            // React reçoit sa réponse tout de suite
             return ResponseEntity.ok().body("Message envoyé avec succès !");
 
         } catch (Exception e) {

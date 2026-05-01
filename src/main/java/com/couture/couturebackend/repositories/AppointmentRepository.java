@@ -9,12 +9,9 @@ import java.util.List;
 @Repository
 public interface AppointmentRepository extends MongoRepository<Appointment, String> {
 
-    // Vérifie si l'heure exacte est déjà prise par quelqu'un d'autre
     boolean existsByAppointmentDate(LocalDateTime appointmentDate);
 
-    // NOUVELLE RÈGLE PRO : Vérifie si le client a déjà un rendez-vous dans le futur
     boolean existsByClientEmailAndAppointmentDateAfter(String clientEmail, LocalDateTime date);
 
-    // Trouve tous les rendez-vous d'une journée spécifique (pour bloquer les heures dans le calendrier)
     List<Appointment> findByAppointmentDateBetween(LocalDateTime start, LocalDateTime end);
 }
