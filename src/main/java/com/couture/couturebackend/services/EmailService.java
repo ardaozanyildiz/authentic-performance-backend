@@ -41,7 +41,7 @@ public class EmailService {
 
             CreateEmailOptions params = CreateEmailOptions.builder()
                     .from("Authentic Performance <onboarding@resend.dev>")
-                    .to("aysunonder8080@gmail.com")
+                    .to("ardaozanyildiz11@gmail.com")
                     .replyTo(request.getEmail())
                     .subject("Nouveau message : " + request.getSubject())
                     .html(htmlContent)
@@ -73,7 +73,7 @@ public class EmailService {
 
             CreateEmailOptions params = CreateEmailOptions.builder()
                     .from("Authentic Performance <onboarding@resend.dev>")
-                    .to("aysunonder8080@gmail.com")
+                    .to("ardaozanyildiz11@gmail.com")
                     .subject("NOUVEAU RENDEZ-VOUS : " + app.getClientName())
                     .html(htmlContent)
                     .build();
@@ -141,7 +141,7 @@ public class EmailService {
 
             CreateEmailOptions params = CreateEmailOptions.builder()
                     .from("Authentic Performance <onboarding@resend.dev>")
-                    .to("aysunonder8080@gmail.com")
+                    .to("ardaozanyildiz11@gmail.com")
                     .subject("ANNULATION : " + app.getClientName())
                     .html(htmlContent)
                     .build();
