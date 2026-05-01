@@ -25,7 +25,7 @@ public class EmailService {
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
             // DESTINATAIRE MODIFIÉ POUR TON TEST :
-            helper.setTo("ardasshopify@gmail.com");
+            helper.setTo("aysunonder8080@gmail.com");
             helper.setFrom("aysunonder8080@gmail.com");
             helper.setReplyTo(request.getEmail());
             helper.setSubject("Nouveau message : " + request.getSubject());
@@ -62,7 +62,7 @@ public class EmailService {
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
             // DESTINATAIRE MODIFIÉ POUR TON TEST :
-            helper.setTo("ardasshopify@gmail.com");
+            helper.setTo("aysunonder8080@gmail.com");
             helper.setFrom("aysunonder8080@gmail.com");
             helper.setSubject("NOUVEAU RENDEZ-VOUS : " + app.getClientName());
 
@@ -135,7 +135,7 @@ public class EmailService {
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
             // DESTINATAIRE MODIFIÉ POUR TON TEST :
-            helper.setTo("ardasshopify@gmail.com");
+            helper.setTo("aysunonder8080@gmail.com");
             helper.setFrom("aysunonder8080@gmail.com");
             helper.setSubject(" ANNULATION : " + app.getClientName());
 
