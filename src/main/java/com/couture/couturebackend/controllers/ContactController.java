@@ -8,7 +8,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/contact")
-@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:5173"})
+@CrossOrigin(origins = {
+        "http://localhost:3000",
+        "http://localhost:5173",
+        "https://authenticperformanceproduction.ca",
+        "https://www.authenticperformanceproduction.ca"
+})
 public class ContactController {
 
     @Autowired
