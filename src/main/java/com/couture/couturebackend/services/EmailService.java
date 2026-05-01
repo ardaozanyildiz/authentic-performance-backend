@@ -95,7 +95,7 @@ public class EmailService {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy 'à' HH:mm");
             String dateLabel = app.getAppointmentDate().format(formatter);
 
-            String lienAnnulation = "http://localhost:5173/annuler-rdv/" + app.getId();
+            String lienAnnulation = "https://authenticperformanceproduction.ca/annuler-rdv/" + app.getId();;
 
             String htmlContent = "<div style='font-family: Arial, sans-serif; border: 1px solid #C9B59C; padding: 30px; border-radius: 10px; max-width: 600px; margin: 0 auto;'>"
                     + "<h2 style='color: #C9B59C; text-align: center;'>Votre rendez-vous est confirmé !</h2>"
